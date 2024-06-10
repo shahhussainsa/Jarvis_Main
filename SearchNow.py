@@ -21,7 +21,7 @@ def takecommand():
   return query
     
 
-query = takecommand().lowe()
+query = takecommand().lower()
 
 engine = pyttsx3.init()
 voices = engine.getProperty("voices")
@@ -37,7 +37,7 @@ def searchGoogle(query):
   if "google" in query:
     import wikipedia as googleScrap
     query = query.replace("jarvis", "")
-    query = query.replace("google search")
+    query = query.replace("google search", "")
     query = query.replace("google","")
     speak("This is found on google")
     
@@ -52,19 +52,19 @@ def searchYoutube(query):
   if "youtube" in query:
     speak("this is what i found")
     query = query.replace("jarvis", "")
-    query = query.replace("youtube search")
+    query = query.replace("youtube search", "")
     query = query.replace("youtube","")
     web = "https://www.youtube.com/results?search_query=" + query
     webbrowser.open(web)
     pywhatkit.playonyt(query)
-    speak("Done, Hussain")
+    speak("Done, sir")
 
 
 def searchWikipedia(query):
   if "wikipedia" in query:
     speak("this is what i found")
     query = query.replace("jarvis", "")
-    query = query.replace("wikipedia search")
+    query = query.replace("wikipedia search","")
     query = query.replace("wikipedia","")
     results = wikipedia.summary(query, sentences = 1)
     speak("According to wikipedia")

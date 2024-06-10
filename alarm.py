@@ -1,3 +1,4 @@
+from playsound import playsound
 import os
 import datetime
 import bs4
@@ -12,7 +13,7 @@ def speak(audio):
   engine.say(audio)
   engine.runAndWait()
   
-extracttime = open("Alarmtext.txt","rt")
+extractedtime = open("Alarmtext.txt","rt")
 time = extractedtime.read()
 Time = str(time)
 extractedtime.close()
@@ -32,7 +33,8 @@ def ring(time):
     currenttime = datetime.datetime.now().strftime("%H:%M:%S")
     if currenttime == Alarmtime:
       speak("Alarm Ringing")
-      os.system("captain.mp3")
+      # playsound("captain.mp3")
+      os.system("jarvis\captain.mp3")
     elif currenttime + "00:00:30" == Alarmtime:
       exit()
 ring(time)      
