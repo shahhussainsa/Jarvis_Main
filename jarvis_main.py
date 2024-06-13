@@ -13,6 +13,22 @@ import webbrowser
 import wikipedia
 import os
 import random
+from plyer import notification
+from pygame import mixer
+import speedtest
+
+
+for i in range(3):
+  a = input("enter password ")
+  pass_file = open("C:/Users/Hussain/Desktop/pythonprgm/jarvis/password.txt", "r")
+  password = pass_file.read()
+  if (a==password):
+    print("WelCome to Jarvis")
+    break
+  elif (i==2 and a != password):
+    exit()
+  elif (a!=password):
+    print("Try Again")
 
 engine = pyttsx3.init()
 voices = engine.getProperty("voices")
@@ -83,6 +99,73 @@ if __name__ == '__main__':
           elif 'close' in query:
             from Dictapp import closeappweb
             closeappweb(query)
+          #######password change
+          elif "change password" in query:
+            speak("What's your new password")
+            new_pw = input("Enter new password\n")
+            new_password = open("password.txt", "w")
+            new_password.write(new_pw)
+            new_password.close()
+            speak("Your password is changed")
+            speak(f"Your new password is {new_pw}") #######password
+            
+          
+          elif "schedule my day" in query:
+            tasks = []
+            speak("Do you want to clear old task YES or NO")
+            quer = takeCommand().lower()
+            if "yes" in query:
+              file = open("tasks.txt","w")
+              file.write(f"")
+              file.close()
+              no_tasks = int(input("enter the number of tasks :- "))
+              i =0
+              for i in range(no_tasks):
+                tasks.append(input("Enter the task"))
+                file = open("taskes.txt","a")
+                file.write(f"{i} : {tasks[i]}\n")
+                file.close()
+            elif "no" in query:
+              i =0
+              no_tasks = int(input("enter the number of tasks :- "))
+              for i in range(no_tasks):
+                tasks.append(input("Enter the task"))
+                file = open("taskes.txt","a")
+                file.write(f"{i} : {tasks[i]}\n")
+                file.close()
+          elif "show my schedule" in query:
+            file = open("tasks.txt","r")
+            content = file.read()
+            file.close()
+            mixer.init()
+            mixer.music.load("notification.mp3")
+            mixer.music.play()
+                             
+            notification.notify(
+              title = "My Schedule :- ",
+              message = content,
+              timeout = 15
+            )
+          elif "open" in query:
+            query = query.replace("open","")
+            query = query.replace("jarvis", "")
+            pyautogui.press("super")
+            pyautogui.typewrite(query)
+            pyautogui.sleep(0.2)
+            pyautogui.press("enter")
+          
+          elif "internet speed" in query:
+            wifi = speedtest.Speedtest()
+            upload_net = wifi.upload()/1048576  ## megabyte = 1024 * 1024 bytes
+            download_net = wifi.download()/1048576
+            print(f"Upload speed : {upload_net}")
+            print(f"Download speed : {download_net}")
+            speak(f"your upload speed is {upload_net}")
+            speak(f"your Download speed is {download_net}")
+                
+                           
+              
+            
           elif "set an alarm" in query:
             print("input time example:- 10 and 10 and 10")
             speak("set the time")
@@ -165,7 +248,15 @@ if __name__ == '__main__':
             
           elif "news" in query:
             from dailynews import latestnews
-            latestnews()        
+            latestnews()
+            
+          elif "shutdown system" in query:
+            speak("Are you sure to shutdown")
+            shutdown = input("Do you wish to shutdown thwe computer")
+            if shutdown == "yes":
+              os.system("shutdown /s /t 1") 
+            elif shutdown == "no":
+              break       
               
           
           # elif "music" in query:km

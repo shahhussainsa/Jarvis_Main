@@ -1,0 +1,9 @@
+, Before running the program install all the modules and packages mentioned here
+
+{
+ , pyttsx3, speech_recognition,  requests
+, pynput, time, bs4, bs4 , datetime, pyautogui
+, webbrowser, wikipedia, os, random, plyer, pygame,
+, speedtest-cli, speech_recognition, pywhatkit, wolframalpha, playsound
+
+}
