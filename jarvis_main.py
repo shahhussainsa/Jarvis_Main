@@ -74,7 +74,7 @@ if __name__ == '__main__':
             speak("Ok Sir")
             break
           elif "hello" in query:
-            speak("Hello, how ar you")
+            speak("Hello, how are you")
           elif "i am fine" in query:
             speak("That's great")
           elif "open" in query:
@@ -155,9 +155,17 @@ if __name__ == '__main__':
             elif b==2:
               webbrowser.open("https://www.youtube.com/watch?v=GjSOKZ4juzs")
           
-          elif "calcculate" in query:
-            pass
-                                            
+          elif "calculate" in query:
+            from Calculate import wolframalpha
+            from Calculate import calc
+            query = query.replace("Calculate", "")
+            query = query.replace("jarvis", "")
+            calc(query)
+            
+            
+          elif "news" in query:
+            from dailynews import latestnews
+            latestnews()        
               
           
           # elif "music" in query:km
