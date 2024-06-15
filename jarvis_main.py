@@ -20,7 +20,7 @@ import speedtest
 
 for i in range(3):
   a = input("enter password ")
-  pass_file = open("C:/Users/Hussain/Desktop/pythonprgm/jarvis/password.txt", "r")
+  pass_file = open("password.txt", "r")
   password = pass_file.read()
   if (a==password):
     print("WelCome to Jarvis")
@@ -113,7 +113,7 @@ if __name__ == '__main__':
           elif "schedule my day" in query:
             tasks = []
             speak("Do you want to clear old task YES or NO")
-            quer = takeCommand().lower()
+            query = takecommand().lower()
             if "yes" in query:
               file = open("tasks.txt","w")
               file.write(f"")
