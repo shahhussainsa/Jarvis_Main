@@ -17,7 +17,6 @@ from plyer import notification
 from pygame import mixer
 import speedtest
 
-
 for i in range(3):
   a = input("enter password ")
   pass_file = open("password.txt", "r")
@@ -90,9 +89,9 @@ if __name__ == '__main__':
             speak("Ok Sir")
             break
           elif "hello" in query:
-            speak("Hello, how are you")
+            speak("Hello, how are you sir")
           elif "i am fine" in query:
-            speak("That's great")
+            speak("That's great, Sir")
           elif "open" in query:
             from Dictapp import openappweb
             openappweb(query)
@@ -130,7 +129,7 @@ if __name__ == '__main__':
               no_tasks = int(input("enter the number of tasks :- "))
               for i in range(no_tasks):
                 tasks.append(input("Enter the task"))
-                file = open("taskes.txt","a")
+                file = open("tasks.txt","a")
                 file.write(f"{i} : {tasks[i]}\n")
                 file.close()
           elif "show my schedule" in query:
@@ -162,14 +161,18 @@ if __name__ == '__main__':
             print(f"Download speed : {download_net}")
             speak(f"your upload speed is {upload_net}")
             speak(f"your Download speed is {download_net}")
-                
-                           
-              
+          
+          elif "translate" in query:
+            from Translate import translategl
+            query = query.replace("translate", "")
+            query = query.replace("jarvis", "")
+            translategl(query)   
             
           elif "set an alarm" in query:
             print("input time example:- 10 and 10 and 10")
-            speak("set the time")
+            speak("set the time, Sir")
             a = input("please tell the time")
+            speak(f" your alaram set at {a}")
             alarm(a)
             speak("Done")
           elif "temperature" in query:
@@ -195,6 +198,10 @@ if __name__ == '__main__':
           elif "my linkedin" in query:
             web = "https://linkedin.com/in/shahhussain22"
             speak("Opening your Linkedin account")
+            webbrowser.open(web)
+          elif "my profile" in query:
+            web = "https://shahhussainsa.github.io/"
+            speak("Opening your Portfolio Profile")
             webbrowser.open(web)
           elif "volume up" in query:
             from Keyboard1 import volume_up
@@ -274,8 +281,9 @@ if __name__ == '__main__':
             from SearchNow import searchWikipedia
             searchWikipedia(query)
           elif "time" in query:
-            current_time = datetime.datetime.now().strftime("%I%M%p")
+            current_time = datetime.datetime.now().strftime("%I:%M:%p")
+            print(f"the time is {current_time}")
             speak(f"the time is {current_time}")
           elif "stop" in query:
-            speak("Going sleep")
+            speak("Going sleep, Sir Call me again if you want anything")
             exit()

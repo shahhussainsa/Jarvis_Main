@@ -11,7 +11,7 @@ def volume_up():
 
 def volume_down():
    for i in range(5):
-    keyboard.press(Key.media_volume_dowm)
-    keyboard.release(Key.media_volume_dowm)
+    keyboard.press(Key.media_volume_down)
+    keyboard.release(Key.media_volume_down)
     sleep(0.1)
   
