@@ -23,6 +23,8 @@ deletetime.truncate(0) #delete time
 deletetime.close()
 
 def ring(time):
+  alarm_ring = False
+  alarm_end_time = None
   timeset = str(time)
   timenow = timeset.replace("jarvis", "")
   timenow = timeset.replace("Set an alarm", "")
@@ -31,10 +33,15 @@ def ring(time):
   print(Alarmtime)
   while True:
     currenttime = datetime.datetime.now().strftime("%H:%M:%S")
-    if currenttime == Alarmtime:
+    if currenttime == Alarmtime and not alarm_ring:
       speak("Alarm Ringing")
       # playsound("captain.mp3")
-      os.system("jarvis\captain.mp3")
+      os.system("captain.mp3")
+      alarm_triggered = True
+      alarm_end_time = datetime.datetime.now() + datetime.timedelta(seconds=30)
+    if alarm_ring and datetime.datetime.now() >= alarm_end_time:
+        speak("Stopping Alarm")
+        break
     elif currenttime + "00:00:30" == Alarmtime:
       exit()
 ring(time)      

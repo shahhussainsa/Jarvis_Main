@@ -38,7 +38,7 @@ def calc(query):
   
   try:
     result = WolfRamAlpha(final)
-    print(f"Retult : {result}")
+    print(f"Result : {result}")
     speak(result) 
   except:
     speak("the value is not answered")

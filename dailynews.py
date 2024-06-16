@@ -22,18 +22,18 @@ def latestnews():
     
   content = None
   url = None
-  speak(" which field new do you want, [Business], [Health], [Sports], [Techonolog], [Science], [Entertainment] ")
-  field = input("Type the field you want to here: ")
-  for key, value in api_dict:
+  speak(" which field news do you want, Sir, [Business], [Health], [Sports], [Techonology], [Science], [Entertainment] ")
+  field = input("Sir, Type the field you want to here: ")
+  for key, value in api_dict.items():
     if key.lower() in field.lower():
       url = value
       print(url)
       print("URl found")
       break
     else:
-      url = True
-  if url in True:
-    print("url not found")
+      # url = True
+      # if url in True:
+        print("url not found")
   news = requests.get(url).text
   news = json.loads(news)
   speak("Here is the first news")
@@ -53,5 +53,5 @@ def latestnews():
     else:
       print("Choose Between 1 and 2")
       speak("Choose Between 1 and 2")
-    speak("That's all, Thank you")
+      speak("That's all, Thank you")
 latestnews() 

@@ -2,7 +2,7 @@ import os
 import pyautogui
 import webbrowser
 import pyttsx3
-import time
+from time import sleep
 
 engine = pyttsx3.init()
 voices = engine.getProperty("voices")
@@ -13,7 +13,7 @@ def speak(audio):
   engine.say(audio)
   engine.runAndWait()
   
-dictapp = {"commamdprompt": "cmd", "paint": "paint", "word":"word","vscode":"vscode","excel":"excel","chrome":"chrome"}
+dictapp = {"commamdprompt": "cmd", "paint": "paint", "word":"word","vscode":"vscode","excel":"excel","chrome":"chrome", "pychram":"pychram","vs code":"vs code"}
 
 def openappweb(query):
     speak("Launching.") 
